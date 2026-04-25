@@ -1,59 +1,155 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+---
+## Technical Requirements
+Pastikan Anda menggunakan teknologi berikut:
+* PHP 8.3 (Minimum 8.2)
+* Laravel 11
+* Composer 2.7.x
+* Database: SQLite (Default) / PostgreSQL / MySQL
+* Filament PHP v3
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+## 🚀 Installation Guide
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal Anda:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1. Clone Repository
+```bash
+git clone [https://github.com/USERNAME_KAMU/Latihan-Interview-2.git](https://github.com/USERNAME_KAMU/Latihan-Interview-2.git)
+cd Latihan-Interview-2
+2. Install Dependencies
+Bash
+composer install
+3. Environment Setup
+Salin file .env.example menjadi .env dan generate application key:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Bash
+cp .env.example .env
+php artisan key:generate
+4. Database Configuration
+Project ini menggunakan SQLite. Pastikan file database sudah ada:
 
-## Learning Laravel
+Bash
+# Untuk Windows (PowerShell)
+New-Item -Path database/database.sqlite -ItemType File
+Lalu jalankan migrasi dan seeder:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Bash
+php artisan migrate
+5. Create Super Admin (Filament)
+Buat user untuk mengakses dashboard admin:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Bash
+php artisan make:filament-user
+6. Run Application
+Bash
+php artisan serve
+Akses dashboard di: http://127.0.0.1:8000/admin
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Untuk soal interview kayak gini,deadline 24 jam setelah soal ini diberikan:
+echnical Requirements
 
-### Premium Partners
+Pastikan Anda menggunakan teknologi berikut:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+PHP 8.xx
 
-## Contributing
+Laravel 11
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Composer 2.7.x
 
-## Code of Conduct
+Database: PostgreSQL/MySQL
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Skenario Aplikasi
 
-## Security Vulnerabilities
+Anda diberikan tugas untuk membuat sebuah aplikasi MANAJEMEN TOKO dengan fitur-fitur
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+sebagai berikut:
 
-## License
+1. Super Admin
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Terdapat super admin yang dapat:
+
+Membuat dan mengelola toko
+
+Mengelola admin dan kasir
+
+2. Level Toko
+
+Toko memiliki 3 level:
+
+1. Toko Pusat
+
+2. Toko Cabang
+
+3. Toko Retail
+
+3. Auto-Generate Users
+
+Setiap toko yang dibuat akan otomatis membuat 2 user dengan role sebagai berikut:
+
+Admin
+
+Hak akses Admin:
+
+Dapat CRUD akun Kasir
+Dapat CRUD akun Kasir
+
+Dapat CRUD Produk
+
+Dapat mengubah data dirinya sendiri
+
+Dapat melihat data penjualan
+
+Kasir
+
+Hak akses Kasir:
+
+Dapat melihat detail produk
+
+Dapat melakukan penjualan produk
+
+Dapat mengubah data dirinya sendiri
+
+Dapat melihat data penjualan
+
+4. Sistem Penjualan
+
+Toko dapat melakukan penjualan dengan:
+
+Metode cart sederhana
+
+Pembayaran sederhana
+
+Catatan: Produk tidak memiliki stok/qty, sehingga jumlah pembelian tidak ada batasan khusus
+
+5. Data Display
+
+Data yang ditampilkan harus:
+
+Memiliki pagination
+
+Dapat dilakukan pencarian
+
+Catatan Penting
+
+A 1. Gunakan JWT sebagai autentikasi
+
+2. Akun login menggunakan email dan password
+Tugas Anda
+
+Mandatory (Wajib)
+
+1. Rancang database dan buat ERD
+
+3. Buat Model, Controller, Migration dan Seeder
+
+4. Buat Dokumentasi (API dan/atau Requirement)
+
+Optional (Opsional)
+
+5. Buat Unit Test
+
+6. Buat User Interface
+
+Pastikan kode Anda Clean and Efficient!
